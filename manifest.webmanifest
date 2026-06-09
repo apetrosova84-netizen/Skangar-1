@@ -1,0 +1,23 @@
+{
+  "name": "СКАнгар — ангары под ключ",
+  "short_name": "СКАнгар",
+  "description": "Проектирование, производство и монтаж быстровозводимых ангаров под ключ в Краснодаре и ЮФО. Склады, ангары для бизнеса, АПК, производства и техники. Расчёт стоимости за 30 минут.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F5F3EE",
+  "theme_color": "#F26A21",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo-trimmed.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

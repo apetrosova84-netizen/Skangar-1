@@ -1,0 +1,284 @@
+/* СКАнгар — фирменные стили */
+:root {
+  --graphite: #1F2528;
+  --graphite-2: #2a3134;
+  --graphite-3: #3a4145;
+  --concrete: #F5F3EE;
+  --concrete-2: #ECE9E0;
+  --steel: #D8D2C5;
+  --steel-2: #C6BFAE;
+  --orange: #F26A21;
+  --orange-deep: #D85510;
+  --green: #3D5A45;
+  --muted: rgba(31, 37, 40, 0.58);
+  --muted-2: rgba(31, 37, 40, 0.38);
+  --border: rgba(31, 37, 40, 0.12);
+  --border-strong: rgba(31, 37, 40, 0.22);
+  --grid-line: rgba(31, 37, 40, 0.06);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  background: var(--concrete);
+  color: var(--graphite);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'ss01', 'tnum';
+}
+
+/* Mono for numbers / technical labels */
+.mono {
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, monospace;
+  font-feature-settings: 'tnum';
+}
+
+/* Layout */
+.shell { width: 100%; max-width: 1360px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 720px) { .shell { padding: 0 20px; } }
+
+section { position: relative; }
+
+/* Typography per brandbook */
+h1, h2, h3, h4 { margin: 0; letter-spacing: -0.01em; color: var(--graphite); font-weight: 600; }
+h1 { font-size: clamp(40px, 5.5vw, 76px); line-height: 1.02; letter-spacing: -0.025em; font-weight: 600; }
+h2 { font-size: clamp(28px, 3vw, 44px); line-height: 1.08; letter-spacing: -0.018em; }
+h3 { font-size: 20px; line-height: 1.25; font-weight: 600; }
+p { margin: 0; }
+
+/* Section header label (small technical tag) */
+.tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.tag::before {
+  content: '';
+  width: 18px; height: 1px;
+  background: var(--graphite);
+  opacity: 0.55;
+}
+
+/* Section heading row */
+.sec-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+.sec-head .left { max-width: 720px; }
+.sec-head h2 { margin-top: 14px; }
+.sec-head .right { color: var(--muted); font-size: 14px; max-width: 280px; text-align: right; padding-bottom: 4px; }
+@media (max-width: 720px) {
+  .sec-head { flex-direction: column; align-items: flex-start; }
+  .sec-head .right { text-align: left; }
+}
+
+/* Buttons — orange only for action per brand rule 2 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  border-radius: 0;
+}
+.btn-primary {
+  background: var(--orange);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--orange-deep); }
+.btn-secondary {
+  background: transparent;
+  color: var(--graphite);
+  border-color: var(--border-strong);
+}
+.btn-secondary:hover { border-color: var(--graphite); }
+.btn-ghost {
+  background: transparent;
+  color: var(--graphite);
+  padding: 14px 0;
+}
+.btn-ghost:hover { color: var(--orange); }
+.btn-arrow {
+  width: 18px; height: 18px; display: inline-block;
+}
+
+/* Dark mode for sections */
+.dark {
+  background: var(--graphite);
+  color: var(--concrete);
+}
+.dark h1, .dark h2, .dark h3, .dark h4 { color: var(--concrete); }
+.dark .tag { color: rgba(245, 243, 238, 0.55); }
+.dark .tag::before { background: var(--concrete); opacity: 0.4; }
+.dark .sec-head { border-color: rgba(245, 243, 238, 0.14); }
+.dark .sec-head .right { color: rgba(245, 243, 238, 0.55); }
+.dark .btn-secondary { color: var(--concrete); border-color: rgba(245, 243, 238, 0.25); }
+.dark .btn-secondary:hover { border-color: var(--concrete); }
+
+/* Section vertical rhythm */
+.sec { padding: 100px 0; }
+.sec-sm { padding: 72px 0; }
+@media (max-width: 720px) {
+  .sec { padding: 64px 0; }
+  .sec-sm { padding: 48px 0; }
+}
+
+/* Grid utilities */
+.grid { display: grid; gap: 24px; }
+
+/* Card patterns */
+.card {
+  background: var(--concrete);
+  border: 1px solid var(--border);
+  padding: 28px;
+}
+.card-steel { background: var(--steel); }
+.dark .card { background: var(--graphite-2); border-color: rgba(245, 243, 238, 0.1); }
+.dark .card-steel { background: var(--graphite-3); }
+
+/* Parameter (big number) */
+.param {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.param-value {
+  font-size: clamp(32px, 3.4vw, 48px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-feature-settings: 'tnum';
+  white-space: nowrap;
+}
+.param-label {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.dark .param-label { color: rgba(245, 243, 238, 0.6); }
+
+/* Form */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.field label {
+  font-size: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.field input, .field select, .field textarea {
+  font-family: inherit;
+  font-size: 15px;
+  padding: 12px 14px;
+  background: var(--concrete);
+  border: 1px solid var(--border-strong);
+  color: var(--graphite);
+  border-radius: 0;
+  outline: none;
+  transition: border-color 120ms ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--graphite);
+}
+.dark .field input, .dark .field select, .dark .field textarea {
+  background: var(--graphite-2);
+  border-color: rgba(245, 243, 238, 0.18);
+  color: var(--concrete);
+}
+.dark .field label { color: rgba(245, 243, 238, 0.55); }
+
+/* Segmented control */
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--border-strong);
+}
+.seg button {
+  padding: 10px 16px;
+  background: transparent;
+  border: 0;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--graphite);
+  cursor: pointer;
+  border-right: 1px solid var(--border-strong);
+}
+.seg button:last-child { border-right: 0; }
+.seg button.active { background: var(--graphite); color: var(--concrete); }
+.dark .seg { border-color: rgba(245, 243, 238, 0.18); }
+.dark .seg button { color: var(--concrete); border-right-color: rgba(245, 243, 238, 0.18); }
+.dark .seg button.active { background: var(--concrete); color: var(--graphite); }
+
+/* Blueprint grid background */
+.bp {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.dark .bp {
+  background-image:
+    linear-gradient(to right, rgba(245,243,238,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245,243,238,0.05) 1px, transparent 1px);
+}
+
+/* Errors text */
+.err { color: var(--orange); font-size: 13px; }
+
+/* Helpers */
+.hide-sm { }
+@media (max-width: 720px) { .hide-sm { display: none !important; } }
+.row { display: flex; }
+.col { display: flex; flex-direction: column; }
+
+/* Small caps tech label */
+.tlabel {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.dark .tlabel { color: rgba(245, 243, 238, 0.55); }
+
+/* Divider tick mark */
+.tick {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border: 1px solid var(--graphite);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.tick-orange { background: var(--orange); border-color: var(--orange); }
+.dark .tick { border-color: var(--concrete); }
+
+/* Smooth anchor scroll */
+html { scroll-behavior: smooth; }
+
+/* No tap highlight */
+button, a { -webkit-tap-highlight-color: transparent; }
+
+/* Edit mode overrides go below */
